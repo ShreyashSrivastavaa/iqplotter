@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, ShieldCheck, AlertCircle } from 'lucide-react';
 import { useApp } from '../../state/store';
-import { signInWithGoogle } from '../../lib/auth/firebase';
+import { signInWithGoogle, mapAuthError } from '../../lib/auth/firebase';
 
 export const AuthModal: React.FC = () => {
   const { state, dispatch, showToast } = useApp();
@@ -21,8 +21,14 @@ export const AuthModal: React.FC = () => {
         showToast(`Signed in as ${user.displayName || user.email}`);
       }
     } catch (err: unknown) {
-      console.error('Google sign-in error:', err);
-      setErrorMsg((err as Error)?.message || 'Failed to sign in with Google. Check configuration.');
+      const mapped = mapAuthError(err);
+      if (mapped.code === 'POPUP_CLOSED' || mapped.code === 'CANCELLED') {
+        // User voluntarily closed or cancelled the popup dialog
+        setErrorMsg(null);
+      } else {
+        console.error('Google sign-in error:', err);
+        setErrorMsg(mapped.originalMessage || 'Failed to sign in with Google. Check configuration.');
+      }
     } finally {
       setLoading(false);
     }

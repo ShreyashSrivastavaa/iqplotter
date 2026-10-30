@@ -76,6 +76,8 @@ export interface UserProfile {
   email: string | null;
   displayName: string | null;
   photoURL: string | null;
+  emailVerified?: boolean;
+  providerId?: string;
 }
 
 export interface AppState {
@@ -90,6 +92,7 @@ export interface AppState {
   authModalOpen: boolean;
   shortcutsModalOpen: boolean;
   user: UserProfile | null;
+  authLoading: boolean;
   theme: ThemeMode;
   isDark: boolean;
 }
@@ -108,5 +111,6 @@ export type AppAction =
   | { type: 'TOGGLE_AUTH_MODAL'; open?: boolean }
   | { type: 'TOGGLE_SHORTCUTS_MODAL'; open?: boolean }
   | { type: 'SET_USER'; user: UserProfile | null }
+  | { type: 'SET_AUTH_LOADING'; loading: boolean }
   | { type: 'SET_THEME'; theme: ThemeMode; isDark: boolean }
   | { type: 'RESTORE_DATASET_AND_CONFIG'; dataset: Dataset; config: ChartConfig };

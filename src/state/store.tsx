@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { AppAction, AppState, ThemeMode, WorkspaceTab } from './types';
 import { decodeShareHash } from '../lib/share/share';
-import { subscribeToAuthChanges } from '../lib/auth/firebase';
+import { subscribeToAuthChanges, checkInitialRedirectResult } from '../lib/auth/firebase';
 import { saveHistoryItem } from '../lib/storage/history';
 
 function getInitialThemeState(): { theme: ThemeMode; isDark: boolean } {
@@ -33,6 +33,7 @@ export const initialAppState: AppState = {
   authModalOpen: false,
   shortcutsModalOpen: false,
   user: null,
+  authLoading: true,
   theme: initialTheme.theme,
   isDark: initialTheme.isDark,
 };
@@ -116,6 +117,13 @@ export function appReducer(state: AppState, action: AppAction): AppState {
       return {
         ...state,
         user: action.user,
+        authLoading: false,
+      };
+
+    case 'SET_AUTH_LOADING':
+      return {
+        ...state,
+        authLoading: action.loading,
       };
 
     case 'SET_THEME':
@@ -265,14 +273,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, [showToast]);
 
-  // Listen to auth changes
+  // Listen to auth changes and check redirect result
   useEffect(() => {
     let unsub = () => {};
+
+    checkInitialRedirectResult().then((redirectUser) => {
+      if (redirectUser) {
+        dispatch({ type: 'SET_USER', user: redirectUser });
+      }
+    });
+
     subscribeToAuthChanges((u) => {
       dispatch({ type: 'SET_USER', user: u });
     }).then((fn) => {
       unsub = fn;
     });
+
     return () => unsub();
   }, []);
 
