@@ -1,21 +1,24 @@
 import React from 'react';
 import { Upload, TrendingUp, BarChart3 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useApp } from '../../state/store';
 import { WorkspaceTab } from '../../state/types';
 
 interface TabItem {
   id: WorkspaceTab;
-  label: string;
+  labelKey: string;
+  defaultLabel: string;
   icon: React.ComponentType<{ className?: string }>;
 }
 
 const TABS: TabItem[] = [
-  { id: 'ingestion', label: 'Data Ingestion', icon: Upload },
-  { id: 'inspection', label: 'Data Inspection', icon: TrendingUp },
-  { id: 'visualization', label: 'Data Visualization', icon: BarChart3 },
+  { id: 'ingestion', labelKey: 'stages.ingestion', defaultLabel: 'Data Ingestion', icon: Upload },
+  { id: 'inspection', labelKey: 'stages.inspection', defaultLabel: 'Data Inspection', icon: TrendingUp },
+  { id: 'visualization', labelKey: 'stages.visualization', defaultLabel: 'Data Visualization', icon: BarChart3 },
 ];
 
 export const StageTabs: React.FC = () => {
+  const { t } = useTranslation();
   const { state, dispatch } = useApp();
   const tabListRef = React.useRef<HTMLDivElement>(null);
 
@@ -83,7 +86,7 @@ export const StageTabs: React.FC = () => {
                 isActive ? 'inline' : 'hidden xs:inline sm:inline'
               }`}
             >
-              {tab.label}
+              {t(tab.labelKey, tab.defaultLabel)}
             </span>
           </button>
         );

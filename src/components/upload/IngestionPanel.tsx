@@ -8,8 +8,10 @@ import { ParseErrorCard } from './ParseErrorCard';
 import { CleaningNotice } from './CleaningNotice';
 import { loadHistory } from '../../lib/storage/history';
 import { HistoryItem } from '../../lib/storage/history';
+import { useTranslation } from 'react-i18next';
 
 export const IngestionPanel: React.FC = () => {
+  const { t } = useTranslation();
   const { state, dispatch, showToast, loadSampleByName } = useApp();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [ingestMode, setIngestMode] = useState<'upload' | 'paste'>('upload');
@@ -135,9 +137,9 @@ export const IngestionPanel: React.FC = () => {
       <div className="py-20 flex flex-col items-center justify-center text-center">
         <Spinner size="lg" className="mb-4" />
         <p className="font-mono font-semibold text-base text-ink mb-1">
-          Parsing {currentFilename || 'file'}...
+          {t('ingestion.parsingFile', { filename: currentFilename || 'file' })}
         </p>
-        <p className="font-mono text-xs text-ink-muted mb-4">Cleaning and inferring column types</p>
+        <p className="font-mono text-xs text-ink-muted mb-4">{t('ingestion.cleaningInferring')}</p>
         {parsingProgress !== null && (
           <div className="w-full max-w-xs mt-2">
             <ProgressBar progress={parsingProgress} label="Reading file" />
@@ -169,7 +171,7 @@ export const IngestionPanel: React.FC = () => {
           </h3>
 
           <p className="font-mono text-xs sm:text-sm text-ink-muted mb-6">
-            {rowCount.toLocaleString()} rows · {colCount} columns · {sizeStr}
+            {rowCount.toLocaleString()} {t('ingestion.rows')} · {colCount} {t('ingestion.columns')} · {sizeStr}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -179,7 +181,7 @@ export const IngestionPanel: React.FC = () => {
               onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', tab: 'inspection' })}
               className="gap-2"
             >
-              <span>Continue to inspection</span>
+              <span>{t('ingestion.continueInspection')}</span>
               <ArrowRight className="w-4 h-4" />
             </Button>
 
@@ -190,7 +192,7 @@ export const IngestionPanel: React.FC = () => {
               className="gap-2 text-accent-orange border-accent-orange/40 hover:bg-bg"
             >
               <BarChart3 className="w-4 h-4 text-accent-orange" />
-              <span>Jump to chart</span>
+              <span>{t('ingestion.jumpToChart')}</span>
             </Button>
 
             <Button
@@ -200,7 +202,7 @@ export const IngestionPanel: React.FC = () => {
               className="gap-2"
             >
               <RotateCw className="w-3.5 h-3.5" />
-              <span>Replace file</span>
+              <span>{t('ingestion.replaceFile')}</span>
             </Button>
 
             <Button
@@ -210,7 +212,7 @@ export const IngestionPanel: React.FC = () => {
               className="gap-2 text-danger hover:text-danger/80"
             >
               <Trash2 className="w-3.5 h-3.5" />
-              <span>Clear</span>
+              <span>{t('ingestion.clear')}</span>
             </Button>
           </div>
         </div>
@@ -241,7 +243,7 @@ export const IngestionPanel: React.FC = () => {
           }`}
         >
           <Upload className="w-3.5 h-3.5" />
-          <span>Upload File</span>
+          <span>{t('ingestion.uploadTab')}</span>
         </button>
         <button
           type="button"
@@ -253,7 +255,7 @@ export const IngestionPanel: React.FC = () => {
           }`}
         >
           <FileText className="w-3.5 h-3.5" />
-          <span>Paste Raw CSV</span>
+          <span>{t('ingestion.pasteTab')}</span>
         </button>
       </div>
 
@@ -275,7 +277,7 @@ export const IngestionPanel: React.FC = () => {
           </div>
 
           <h3 className="font-mono font-bold text-lg sm:text-xl text-ink mb-3">
-            {isDragOver ? 'Drop to upload' : 'Drag & drop your CSV here'}
+            {isDragOver ? t('ingestion.dropzoneRelease') : t('ingestion.dropzoneTitle')}
           </h3>
 
           <Button
@@ -288,16 +290,16 @@ export const IngestionPanel: React.FC = () => {
               fileInputRef.current?.click();
             }}
           >
-            Browse files
+            {t('ingestion.browseFiles')}
           </Button>
 
           <p className="font-mono text-xs sm:text-sm text-ink-subtle mb-3">
-            CSV, TSV, TXT or XLSX · up to 10 MB
+            {t('ingestion.fileLimits')}
           </p>
 
           <div className="inline-flex items-center gap-1.5 font-mono text-xs text-ink-muted">
             <Lock className="w-3.5 h-3.5 text-success" />
-            <span>Processed in your browser. Never uploaded.</span>
+            <span>{t('app.privacyNotice')}</span>
           </div>
         </div>
       ) : (
@@ -306,23 +308,23 @@ export const IngestionPanel: React.FC = () => {
           <div className="flex items-center justify-between text-xs">
             <span className="font-semibold text-ink flex items-center gap-1.5">
               <FileText className="w-4 h-4 text-accent-orange" />
-              <span>Paste comma or tab-delimited text</span>
+              <span>{t('ingestion.pasteTitle')}</span>
             </span>
             <div className="flex items-center gap-2">
-              <span className="text-ink-subtle text-[11px]">Load example:</span>
+              <span className="text-ink-subtle text-[11px]">{t('ingestion.loadExample')}</span>
               <button
                 type="button"
                 onClick={() => loadExampleIntoPaste('sales')}
                 className="px-2 py-0.5 rounded bg-bg hover:bg-line text-ink text-[11px] transition-colors"
               >
-                Sales
+                {t('ingestion.exampleSales')}
               </button>
               <button
                 type="button"
                 onClick={() => loadExampleIntoPaste('grades')}
                 className="px-2 py-0.5 rounded bg-bg hover:bg-line text-ink text-[11px] transition-colors"
               >
-                Grades
+                {t('ingestion.exampleGrades')}
               </button>
             </div>
           </div>
@@ -346,7 +348,7 @@ export const IngestionPanel: React.FC = () => {
                 onClick={() => setPastedText('')}
                 disabled={!pastedText}
               >
-                Clear
+                {t('ingestion.clearText')}
               </Button>
               <Button
                 variant="primary"
@@ -356,7 +358,7 @@ export const IngestionPanel: React.FC = () => {
                 className="gap-1.5"
               >
                 <Sparkles className="w-3.5 h-3.5 text-accent-orange" />
-                <span>Parse & Plot Data</span>
+                <span>{t('ingestion.loadPasted')}</span>
               </Button>
             </div>
           </div>
@@ -373,31 +375,31 @@ export const IngestionPanel: React.FC = () => {
 
       {/* Sample Data Chips */}
       <div className="mt-8 text-center">
-        <p className="font-mono text-xs sm:text-sm text-ink-muted mb-3">Or try sample data:</p>
+        <p className="font-mono text-xs sm:text-sm text-ink-muted mb-3">{t('ingestion.orExploreSamples')}</p>
         <div className="flex flex-wrap items-center justify-center gap-2.5">
           <button
             type="button"
             onClick={() => loadSampleByName('monthly-sales.csv')}
             className="px-4 py-2 rounded-full border border-outline bg-transparent font-mono text-xs sm:text-sm text-ink hover:bg-card transition-colors flex items-center gap-2 group"
           >
-            <span>Monthly sales</span>
-            <span className="text-[10px] text-ink-subtle px-1.5 py-0.5 rounded-full bg-bg border border-line group-hover:border-outline">96 rows</span>
+            <span>{t('hero.sampleSales')}</span>
+            <span className="text-[10px] text-ink-subtle px-1.5 py-0.5 rounded-full bg-bg border border-line group-hover:border-outline">{t('hero.rowsCount', { count: 96 })}</span>
           </button>
           <button
             type="button"
             onClick={() => loadSampleByName('daily-temperature.csv')}
             className="px-4 py-2 rounded-full border border-outline bg-transparent font-mono text-xs sm:text-sm text-ink hover:bg-card transition-colors flex items-center gap-2 group"
           >
-            <span>Daily temperature</span>
-            <span className="text-[10px] text-ink-subtle px-1.5 py-0.5 rounded-full bg-bg border border-line group-hover:border-outline">180 rows</span>
+            <span>{t('hero.sampleWeather')}</span>
+            <span className="text-[10px] text-ink-subtle px-1.5 py-0.5 rounded-full bg-bg border border-line group-hover:border-outline">{t('hero.rowsCount', { count: 180 })}</span>
           </button>
           <button
             type="button"
             onClick={() => loadSampleByName('exam-scores.csv')}
             className="px-4 py-2 rounded-full border border-outline bg-transparent font-mono text-xs sm:text-sm text-ink hover:bg-card transition-colors flex items-center gap-2 group"
           >
-            <span>Exam scores</span>
-            <span className="text-[10px] text-ink-subtle px-1.5 py-0.5 rounded-full bg-bg border border-line group-hover:border-outline">150 rows</span>
+            <span>{t('hero.sampleScores')}</span>
+            <span className="text-[10px] text-ink-subtle px-1.5 py-0.5 rounded-full bg-bg border border-line group-hover:border-outline">{t('hero.rowsCount', { count: 150 })}</span>
           </button>
         </div>
       </div>
@@ -405,7 +407,7 @@ export const IngestionPanel: React.FC = () => {
       {/* Recent Files from History if available */}
       {recentFiles.length > 0 && (
         <div className="mt-8 pt-6 border-t border-line text-left">
-          <p className="font-mono text-xs text-ink-subtle mb-2 uppercase tracking-wider">Recent files</p>
+          <p className="font-mono text-xs text-ink-subtle mb-2 uppercase tracking-wider">{t('ingestion.recentFiles')}</p>
           <div className="flex flex-col gap-1.5">
             {recentFiles.map((item) => (
               <div

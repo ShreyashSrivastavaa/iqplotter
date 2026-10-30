@@ -22,8 +22,10 @@ import { ChartCanvas } from './ChartCanvas';
 import { ExportMenu } from './ExportMenu';
 import { SharePopover } from './SharePopover';
 import { Button } from '../ui/Button';
+import { useTranslation } from 'react-i18next';
 
 export const VisualizationPanel: React.FC = () => {
+  const { t } = useTranslation();
   const { state, dispatch, loadSampleByName } = useApp();
   const exportFrameRef = useRef<HTMLDivElement>(null);
   const [customizeOpen, setCustomizeOpen] = useState(false);
@@ -35,9 +37,9 @@ export const VisualizationPanel: React.FC = () => {
         <div className="w-12 h-12 rounded-full bg-bg border border-line flex items-center justify-center text-ink-subtle mx-auto mb-4">
           <Database className="w-6 h-6" />
         </div>
-        <h3 className="font-mono font-bold text-lg text-ink mb-2">Nothing to visualize yet</h3>
+        <h3 className="font-mono font-bold text-lg text-ink mb-2">{t('visualize.emptyTitle')}</h3>
         <p className="font-mono text-sm text-ink-muted mb-6">
-          Upload a data file or explore our sample datasets to start generating interactive charts.
+          {t('visualize.emptyDesc')}
         </p>
         <div className="flex items-center justify-center gap-3">
           <Button
@@ -45,14 +47,14 @@ export const VisualizationPanel: React.FC = () => {
             size="md"
             onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', tab: 'ingestion' })}
           >
-            Upload a file
+            {t('visualize.uploadButton')}
           </Button>
           <Button
             variant="outline"
             size="md"
             onClick={() => loadSampleByName('monthly-sales.csv')}
           >
-            Use sample data
+            {t('visualize.useSample')}
           </Button>
         </div>
       </div>
@@ -509,7 +511,7 @@ export const VisualizationPanel: React.FC = () => {
           {/* Action Row */}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className="text-xs font-mono text-ink-subtle">
-              {chartResult.meta.totalPoints.toLocaleString()} data points
+              {t('visualize.totalPoints', { count: chartResult.meta.totalPoints.toLocaleString() })}
             </span>
             <div className="flex items-center gap-2.5">
               <SharePopover containerRef={exportFrameRef} />
@@ -536,7 +538,7 @@ export const VisualizationPanel: React.FC = () => {
           className="gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Data Inspection</span>
+          <span>{t('visualize.backInspection')}</span>
         </Button>
 
         <Button
@@ -545,7 +547,7 @@ export const VisualizationPanel: React.FC = () => {
           onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', tab: 'ingestion' })}
           className="gap-2"
         >
-          <span>Upload / Load New File</span>
+          <span>{t('visualize.loadNewFile')}</span>
           <ArrowRight className="w-4 h-4" />
         </Button>
       </div>

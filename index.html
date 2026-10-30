@@ -1,16 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#FAF7E9" id="theme-color-meta" />
+
+    <!-- Primary meta -->
     <title>iqplotter | Turn Your CSV Data Into Charts Instantly</title>
     <meta
       name="description"
-      content="iqplotter is a free CSV to chart tool with instant plotting, auto-cleaning, dark mode, and private processing. Drag-and-drop, high-quality image exports, and saved history."
+      content="iqplotter is a free CSV to chart tool. Drag-and-drop CSV or Excel files and instantly generate bar, line, scatter, and pie charts — 100% in your browser, private, no account required."
     />
-    <meta name="keywords" content="Free CSV Chart Generator, CSV to chart, plot CSV, CSV data visualization, instant chart generator, browser chart tool, iqplotter" />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+    <link rel="canonical" href="https://iqplotter.web.app/" />
 
     <!-- Apple mobile web app -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -19,35 +21,106 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://iqplotter.web.app/" />
     <meta property="og:title" content="iqplotter | Free CSV Chart Generator" />
     <meta
       property="og:description"
-      content="Turn raw CSV data into clear, shareable charts in seconds. 100% private in-browser processing, dark mode, no account needed."
+      content="Turn raw CSV or Excel data into clear, shareable charts in seconds. 100% private in-browser processing, dark mode, no account needed."
     />
     <meta property="og:site_name" content="iqplotter" />
+    <meta property="og:locale" content="en_US" />
+    <!-- OG image: add a 1200×630 PNG at /og-image.png and uncomment the lines below -->
+    <!-- <meta property="og:image" content="https://iqplotter.web.app/og-image.png" /> -->
+    <!-- <meta property="og:image:width" content="1200" /> -->
+    <!-- <meta property="og:image:height" content="630" /> -->
+    <!-- <meta property="og:image:alt" content="iqplotter — CSV to Chart in seconds" /> -->
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="iqplotter | Turn Your CSV Data Into Charts Instantly" />
     <meta
       name="twitter:description"
       content="Free CSV Chart Generator. Instant plotting, auto-cleaning, dark mode, and privacy-first browser processing."
     />
+    <!-- <meta name="twitter:image" content="https://iqplotter.web.app/og-image.png" /> -->
+
+    <!--
+      hreflang note: This is a client-side SPA. Firebase Hosting serves the same index.html
+      for every URL, so the server cannot vary <head> per route or locale. Per-language
+      hreflang links (e.g. /hi/, /es/) are NOT implemented because no separate localized
+      HTML is served — doing so would be technically incorrect and mislead crawlers.
+      The app detects the user's browser language at runtime and switches the UI accordingly.
+      All crawlers will see the English canonical URL as the authoritative version.
+    -->
+
+    <!-- JSON-LD: WebSite + SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://iqplotter.web.app/#website",
+          "url": "https://iqplotter.web.app/",
+          "name": "iqplotter",
+          "description": "Free in-browser CSV to chart generator. Supports bar, line, scatter, and pie charts with auto-cleaning and dark mode.",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://iqplotter.web.app/#app",
+          "name": "iqplotter",
+          "url": "https://iqplotter.web.app/",
+          "applicationCategory": "DataVisualizationApplication",
+          "operatingSystem": "Any (runs in browser)",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "description": "Upload a CSV or Excel file and instantly generate interactive bar, line, scatter, or pie charts. Includes data inspection, auto-cleaning, export, and local history. Works entirely in your browser — no uploads, no account required.",
+          "featureList": [
+            "CSV and Excel file support",
+            "Bar, line, scatter, and pie chart generation",
+            "Automatic data cleaning and type inference",
+            "Dark mode",
+            "Chart export as PNG and SVG",
+            "Local browser history",
+            "Shareable chart URLs",
+            "9 supported UI languages"
+          ],
+          "inLanguage": ["en", "hi", "es", "fr", "de", "pt", "ja", "zh-CN", "ar"],
+          "isAccessibleForFree": true
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://iqplotter.web.app/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- Theme initialization script (prevents flash of wrong theme) -->
     <script>
       (function() {
         try {
-          const stored = localStorage.getItem('iqplotter_theme');
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var stored = localStorage.getItem('iqplotter_theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
           if (stored === 'dark' || (!stored && prefersDark)) {
             document.documentElement.classList.add('dark');
-            const meta = document.getElementById('theme-color-meta');
+            var meta = document.getElementById('theme-color-meta');
             if (meta) meta.setAttribute('content', '#12110F');
           } else {
             document.documentElement.classList.remove('dark');
-            const meta = document.getElementById('theme-color-meta');
-            if (meta) meta.setAttribute('content', '#FAF7E9');
+            var meta2 = document.getElementById('theme-color-meta');
+            if (meta2) meta2.setAttribute('content', '#FAF7E9');
           }
         } catch (e) {}
       })();
@@ -59,6 +132,13 @@
       type="image/svg+xml"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231A1714'/%3E%3Crect x='6' y='18' width='5' height='8' rx='1' fill='%23F26B21'/%3E%3Crect x='13' y='12' width='5' height='14' rx='1' fill='%23F7CDA6'/%3E%3Crect x='20' y='7' width='5' height='19' rx='1' fill='%23FAF7E9'/%3E%3C/svg%3E"
     />
+
+    <!-- Web manifest -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Preconnect for Google Fonts used at runtime by Firebase auth popup -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body class="bg-bg text-ink font-mono antialiased min-h-screen selection:bg-[#F7CDA6] selection:text-[#1A1714]">
     <div id="root"></div>

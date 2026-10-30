@@ -4,8 +4,10 @@ import { useApp } from '../../state/store';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { ColumnType } from '../../state/types';
+import { useTranslation } from 'react-i18next';
 
 export const InspectionPanel: React.FC = () => {
+  const { t } = useTranslation();
   const { state, dispatch, loadSampleByName, showToast } = useApp();
   const [colTypeFilter, setColTypeFilter] = useState<'all' | ColumnType>('all');
   const [colSearch, setColSearch] = useState('');
@@ -21,9 +23,9 @@ export const InspectionPanel: React.FC = () => {
         <div className="w-12 h-12 rounded-full bg-bg border border-line flex items-center justify-center text-ink-subtle mx-auto mb-4">
           <Database className="w-6 h-6" />
         </div>
-        <h3 className="font-mono font-bold text-lg text-ink mb-2">Nothing to inspect yet</h3>
+        <h3 className="font-mono font-bold text-lg text-ink mb-2">{t('inspection.emptyTitle')}</h3>
         <p className="font-mono text-sm text-ink-muted mb-6">
-          Load a CSV or Excel file first, or choose one of our prepared sample datasets.
+          {t('inspection.emptyDesc')}
         </p>
         <div className="flex items-center justify-center gap-3">
           <Button
@@ -31,14 +33,14 @@ export const InspectionPanel: React.FC = () => {
             size="md"
             onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', tab: 'ingestion' })}
           >
-            Upload a file
+            {t('inspection.uploadButton')}
           </Button>
           <Button
             variant="outline"
             size="md"
             onClick={() => loadSampleByName('monthly-sales.csv')}
           >
-            Use sample data
+            {t('inspection.useSample')}
           </Button>
         </div>
       </div>
@@ -275,10 +277,9 @@ export const InspectionPanel: React.FC = () => {
       <div>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
           <div>
-            <h4 className="font-mono font-bold text-base text-ink">Data Preview</h4>
+            <h4 className="font-mono font-bold text-base text-ink">{t('inspection.dataPreview')}</h4>
             <span className="font-mono text-xs text-ink-subtle">
-              Showing {previewRows.length} of {processedRows.length.toLocaleString()} rows
-              {tableSearch && ' (filtered)'} · Click headers to sort, click cells to copy
+              {t('inspection.showingRows', { shown: previewRows.length, total: processedRows.length.toLocaleString() })}
             </span>
           </div>
 
@@ -288,7 +289,7 @@ export const InspectionPanel: React.FC = () => {
               <Search className="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-ink-subtle" />
               <input
                 type="text"
-                placeholder="Search rows..."
+                placeholder={t('inspection.searchRows')}
                 value={tableSearch}
                 onChange={(e) => setTableSearch(e.target.value)}
                 className="pl-8 pr-3 py-1 bg-bg border border-line rounded-lg text-xs font-mono text-ink placeholder:text-ink-subtle outline-none focus:border-ink w-36 sm:w-48"
@@ -313,10 +314,10 @@ export const InspectionPanel: React.FC = () => {
               size="sm"
               onClick={downloadCleanCsv}
               className="gap-1.5 text-xs py-1"
-              title="Download cleaned CSV"
+              title={t('inspection.exportCsv')}
             >
               <Download className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Export CSV</span>
+              <span>{t('inspection.exportCsv')}</span>
             </Button>
           </div>
         </div>
@@ -394,11 +395,11 @@ export const InspectionPanel: React.FC = () => {
       <div className="p-4 sm:p-5 rounded-2xl bg-card border border-line text-left">
         <h4 className="font-mono font-bold text-sm text-ink mb-2 flex items-center gap-2">
           <FileSpreadsheet className="w-4 h-4 text-accent-orange" />
-          <span>Cleaning & Transformation Log</span>
+          <span>{t('inspection.cleaningLog')}</span>
         </h4>
         <ul className="list-disc list-inside space-y-1 font-mono text-xs text-ink-muted">
-          <li>Removed {report.removedDuplicateRows} duplicate row(s).</li>
-          <li>Dropped {report.removedEmptyRows} empty row(s) and {report.removedEmptyColumns} empty column(s).</li>
+          <li>{t('inspection.logDuplicates', { count: report.removedDuplicateRows })}</li>
+          <li>{t('inspection.logDropped', { rows: report.removedEmptyRows, cols: report.removedEmptyColumns })}</li>
           {report.renamedHeaders.length > 0 ? (
             <li>Renamed headers: {report.renamedHeaders.map((r) => `"${r.from}" → "${r.to}"`).join(', ')}.</li>
           ) : (
@@ -409,8 +410,8 @@ export const InspectionPanel: React.FC = () => {
           ) : (
             <li>Numeric columns were already cleanly formatted.</li>
           )}
-          <li>Total missing or invalid values converted to null: {report.missingValueCells}.</li>
-          {report.truncated && <li className="text-warning">Dataset capped at 100,000 rows.</li>}
+          <li>{t('inspection.logMissing', { count: report.missingValueCells })}</li>
+          {report.truncated && <li className="text-warning">{t('inspection.logCap')}</li>}
         </ul>
       </div>
 
@@ -421,7 +422,7 @@ export const InspectionPanel: React.FC = () => {
           size="md"
           onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', tab: 'ingestion' })}
         >
-          ← Ingestion
+          {t('inspection.backIngestion')}
         </Button>
 
         <Button
@@ -430,7 +431,7 @@ export const InspectionPanel: React.FC = () => {
           onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', tab: 'visualization' })}
           className="gap-2 shadow-sm"
         >
-          <span>Build a chart</span>
+          <span>{t('inspection.buildChart')}</span>
           <ArrowRight className="w-4 h-4" />
         </Button>
       </div>

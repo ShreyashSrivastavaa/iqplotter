@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { AppContent } from './App';
 import { AppProvider } from './state/store';
+import './lib/i18n';
 import './index.css';
 
 const rootEl = document.getElementById('root');

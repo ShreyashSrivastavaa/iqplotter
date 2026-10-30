@@ -1,0 +1,18 @@
+{
+  "name": "iqplotter",
+  "short_name": "iqplotter",
+  "description": "Turn your CSV data into charts instantly. Free, private, in-browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7E9",
+  "theme_color": "#F26B21",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231A1714'/%3E%3Crect x='6' y='18' width='5' height='8' rx='1' fill='%23F26B21'/%3E%3Crect x='13' y='12' width='5' height='14' rx='1' fill='%23F7CDA6'/%3E%3Crect x='20' y='7' width='5' height='19' rx='1' fill='%23FAF7E9'/%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities"]
+}

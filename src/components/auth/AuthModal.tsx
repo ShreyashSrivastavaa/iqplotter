@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { X, ShieldCheck, AlertCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useApp } from '../../state/store';
 import { signInWithGoogle, mapAuthError } from '../../lib/auth/firebase';
 
 export const AuthModal: React.FC = () => {
+  const { t } = useTranslation();
   const { state, dispatch, showToast } = useApp();
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -18,7 +20,7 @@ export const AuthModal: React.FC = () => {
       if (user) {
         dispatch({ type: 'SET_USER', user });
         dispatch({ type: 'TOGGLE_AUTH_MODAL', open: false });
-        showToast(`Signed in as ${user.displayName || user.email}`);
+        showToast(`${t('nav.signIn')}: ${user.displayName || user.email}`);
       }
     } catch (err: unknown) {
       const mapped = mapAuthError(err);
@@ -27,7 +29,7 @@ export const AuthModal: React.FC = () => {
         setErrorMsg(null);
       } else {
         console.error('Google sign-in error:', err);
-        setErrorMsg(mapped.originalMessage || 'Failed to sign in with Google. Check configuration.');
+        setErrorMsg(t(mapped.key) || mapped.originalMessage || t('auth.errors.generic'));
       }
     } finally {
       setLoading(false);
@@ -49,14 +51,14 @@ export const AuthModal: React.FC = () => {
             type="button"
             onClick={() => dispatch({ type: 'TOGGLE_AUTH_MODAL', open: false })}
             className="absolute top-5 right-5 p-1 rounded-full text-ink-subtle hover:text-ink hover:bg-bg transition-colors"
-            aria-label="Close"
+            aria-label={t('common.close')}
           >
             <X className="w-5 h-5" />
           </button>
 
-          <h3 className="font-sans font-bold text-2xl text-ink mb-2">Sign in to iqplotter</h3>
+          <h3 className="font-sans font-bold text-2xl text-ink mb-2">{t('auth.modalTitle')}</h3>
           <p className="text-xs text-ink-muted mb-6 leading-relaxed">
-            Sign in is completely optional. Your datasets, charts and history always remain 100% private in your browser.
+            {t('auth.modalDesc')}
           </p>
 
           {errorMsg && (
@@ -74,7 +76,7 @@ export const AuthModal: React.FC = () => {
             className="w-full h-12 rounded-full border border-line bg-card hover:bg-bg text-ink font-mono font-semibold text-sm active:translate-y-[1px] transition-all flex items-center justify-center gap-3 shadow-sm disabled:opacity-50"
           >
             {/* Google Icon SVG */}
-            <svg className="w-4 h-4" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 fill="#4285F4"
                 d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"
@@ -92,12 +94,12 @@ export const AuthModal: React.FC = () => {
                 d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
               />
             </svg>
-            <span>{loading ? 'Signing in...' : 'Continue with Google'}</span>
+            <span>{loading ? t('auth.signingIn') : t('auth.continueGoogle')}</span>
           </button>
 
           <div className="mt-6 pt-4 border-t border-line flex items-center justify-center gap-1.5 text-[11px] text-ink-subtle">
             <ShieldCheck className="w-3.5 h-3.5 text-[#067647]" />
-            <span>No data ever leaves your device</span>
+            <span>{t('auth.privacyTag')}</span>
           </div>
         </div>
       </div>
