@@ -6,7 +6,15 @@ import { InspectionPanel } from '../inspect/InspectionPanel';
 import { VisualizationPanel } from '../visualize/VisualizationPanel';
 
 export const ShowcaseCard: React.FC = () => {
-  const { state } = useApp();
+  const { state, scrollToWorkspace } = useApp();
+  const prevTabRef = React.useRef(state.activeTab);
+
+  React.useEffect(() => {
+    if (prevTabRef.current !== state.activeTab) {
+      prevTabRef.current = state.activeTab;
+      scrollToWorkspace();
+    }
+  }, [state.activeTab, scrollToWorkspace]);
 
   return (
     <section id="workspace" className="w-full max-w-[1375px] mx-auto px-4 sm:px-6 my-10 sm:my-16 scroll-mt-24">

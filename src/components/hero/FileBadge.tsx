@@ -127,7 +127,7 @@ export const BadgeCluster: React.FC = () => {
   const handleBadgeClick = (sample: string, e: React.MouseEvent) => {
     e.stopPropagation();
     scrollToWorkspace(false);
-    loadSampleByName(sample);
+    loadSampleByName(sample, 'visualization');
   };
 
   return (

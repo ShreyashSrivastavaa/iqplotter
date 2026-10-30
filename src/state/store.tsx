@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
-import { AppAction, AppState, ThemeMode } from './types';
+import { AppAction, AppState, ThemeMode, WorkspaceTab } from './types';
 import { decodeShareHash } from '../lib/share/share';
 import { subscribeToAuthChanges } from '../lib/auth/firebase';
 import { saveHistoryItem } from '../lib/storage/history';
@@ -53,6 +53,7 @@ export function appReducer(state: AppState, action: AppAction): AppState {
         status: 'ready',
         error: null,
         cleaningNoticeDismissed: false,
+        activeTab: action.targetTab ?? 'inspection',
         notices: action.notices ? [...action.notices] : [],
       };
 
@@ -145,7 +146,7 @@ interface AppContextValue {
   dispatch: React.Dispatch<AppAction>;
   toastMessage: string | null;
   showToast: (msg: string, isError?: boolean) => void;
-  loadSampleByName: (sampleName: string) => Promise<void>;
+  loadSampleByName: (sampleName: string, targetTab?: WorkspaceTab) => Promise<void>;
   scrollToWorkspace: (focusDropzone?: boolean) => void;
   toggleTheme: () => void;
 }
@@ -205,8 +206,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const scrollToWorkspace = React.useCallback((focusDropzone = false) => {
     const el = document.getElementById('workspace');
     if (el) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      const prefersReducedMotion =
+        typeof window !== 'undefined' &&
+        window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
 
       if (focusDropzone) {
         setTimeout(() => {
@@ -219,7 +222,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Load sample dataset
   const loadSampleByName = React.useCallback(
-    async (sampleName: string) => {
+    async (sampleName: string, targetTab: WorkspaceTab = 'inspection') => {
       dispatch({ type: 'START_PARSING' });
       try {
         const res = await fetch(`/samples/${sampleName}`);
@@ -233,8 +236,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           dataset: result.dataset,
           config: result.config!,
           notices: result.notices,
+          targetTab,
         });
         showToast(`Loaded ${sampleName.replace('.csv', '').replace('-', ' ')} data`);
+        scrollToWorkspace();
       } catch (err: unknown) {
         console.error('Failed to load sample:', err);
         showToast('Failed to load sample data', true);
@@ -244,7 +249,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         });
       }
     },
-    [showToast]
+    [showToast, scrollToWorkspace]
   );
 
   // Check for shared URL hash on mount

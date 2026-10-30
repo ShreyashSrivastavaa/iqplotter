@@ -11,6 +11,8 @@ import {
   Sparkles,
   ArrowUpDown,
   Grid,
+  ArrowLeft,
+  ArrowRight,
 } from 'lucide-react';
 import { useApp } from '../../state/store';
 import { buildSeries } from '../../lib/chart/buildSeries';
@@ -523,6 +525,29 @@ export const VisualizationPanel: React.FC = () => {
             onTitleChange={(title) => dispatch({ type: 'SET_CONFIG', config: { title } })}
           />
         </div>
+      </div>
+
+      {/* Bottom Navigation */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-6 mt-6 border-t border-line">
+        <Button
+          variant="outline"
+          size="md"
+          onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', tab: 'inspection' })}
+          className="gap-2"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back to Data Inspection</span>
+        </Button>
+
+        <Button
+          variant="outline"
+          size="md"
+          onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', tab: 'ingestion' })}
+          className="gap-2"
+        >
+          <span>Upload / Load New File</span>
+          <ArrowRight className="w-4 h-4" />
+        </Button>
       </div>
     </div>
   );

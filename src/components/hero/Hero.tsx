@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
 
   const handleSeeItInAction = async () => {
     scrollToWorkspace(false);
-    await loadSampleByName('monthly-sales.csv');
+    await loadSampleByName('monthly-sales.csv', 'visualization');
   };
 
   return (
@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
           type="button"
           onClick={async () => {
             scrollToWorkspace(false);
-            await loadSampleByName('monthly-sales.csv');
+            await loadSampleByName('monthly-sales.csv', 'visualization');
           }}
           className="px-3 py-1 rounded-full border border-line bg-card hover:bg-bg hover:border-outline text-ink transition-colors flex items-center gap-1.5"
         >
@@ -84,7 +84,7 @@ export const Hero: React.FC = () => {
           type="button"
           onClick={async () => {
             scrollToWorkspace(false);
-            await loadSampleByName('daily-temperature.csv');
+            await loadSampleByName('daily-temperature.csv', 'visualization');
           }}
           className="px-3 py-1 rounded-full border border-line bg-card hover:bg-bg hover:border-outline text-ink transition-colors flex items-center gap-1.5"
         >
@@ -96,7 +96,7 @@ export const Hero: React.FC = () => {
           type="button"
           onClick={async () => {
             scrollToWorkspace(false);
-            await loadSampleByName('exam-scores.csv');
+            await loadSampleByName('exam-scores.csv', 'visualization');
           }}
           className="px-3 py-1 rounded-full border border-line bg-card hover:bg-bg hover:border-outline text-ink transition-colors flex items-center gap-1.5"
         >

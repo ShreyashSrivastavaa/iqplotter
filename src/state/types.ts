@@ -97,7 +97,7 @@ export interface AppState {
 export type AppAction =
   | { type: 'SET_ACTIVE_TAB'; tab: WorkspaceTab }
   | { type: 'START_PARSING'; filename?: string }
-  | { type: 'PARSE_SUCCESS'; dataset: Dataset; config: ChartConfig; notices?: string[] }
+  | { type: 'PARSE_SUCCESS'; dataset: Dataset; config: ChartConfig; notices?: string[]; targetTab?: WorkspaceTab }
   | { type: 'PARSE_ERROR'; error: AppError }
   | { type: 'SET_CONFIG'; config: Partial<ChartConfig> }
   | { type: 'DISMISS_CLEANING_NOTICE' }
