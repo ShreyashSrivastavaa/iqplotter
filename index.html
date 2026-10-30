@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#FAF7E9" id="theme-color-meta" />
+    <title>iqplotter | Turn Your CSV Data Into Charts Instantly</title>
+    <meta
+      name="description"
+      content="iqplotter is a free CSV to chart tool with instant plotting, auto-cleaning, dark mode, and private processing. Drag-and-drop, high-quality image exports, and saved history."
+    />
+    <meta name="keywords" content="Free CSV Chart Generator, CSV to chart, plot CSV, CSV data visualization, instant chart generator, browser chart tool, iqplotter" />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Apple mobile web app -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="iqplotter" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="iqplotter | Free CSV Chart Generator" />
+    <meta
+      property="og:description"
+      content="Turn raw CSV data into clear, shareable charts in seconds. 100% private in-browser processing, dark mode, no account needed."
+    />
+    <meta property="og:site_name" content="iqplotter" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="iqplotter | Turn Your CSV Data Into Charts Instantly" />
+    <meta
+      name="twitter:description"
+      content="Free CSV Chart Generator. Instant plotting, auto-cleaning, dark mode, and privacy-first browser processing."
+    />
+
+    <!-- Theme initialization script (prevents flash of wrong theme) -->
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('iqplotter_theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+            const meta = document.getElementById('theme-color-meta');
+            if (meta) meta.setAttribute('content', '#12110F');
+          } else {
+            document.documentElement.classList.remove('dark');
+            const meta = document.getElementById('theme-color-meta');
+            if (meta) meta.setAttribute('content', '#FAF7E9');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Favicon: inline SVG with warm brand styling -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231A1714'/%3E%3Crect x='6' y='18' width='5' height='8' rx='1' fill='%23F26B21'/%3E%3Crect x='13' y='12' width='5' height='14' rx='1' fill='%23F7CDA6'/%3E%3Crect x='20' y='7' width='5' height='19' rx='1' fill='%23FAF7E9'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body class="bg-bg text-ink font-mono antialiased min-h-screen selection:bg-[#F7CDA6] selection:text-[#1A1714]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
