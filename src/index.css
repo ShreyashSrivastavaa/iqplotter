@@ -1,0 +1,100 @@
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FAF7E9;
+  --ink: #1A1714;
+  --ink-muted: #5C574D;
+  --ink-subtle: #8B8578;
+  --line: #E9E4D2;
+  --outline: #8A8478;
+  --card: #FCFAF2;
+  --pill-bg: rgba(255, 251, 240, 0.55);
+  --pill-active: #FBF6EA;
+  --pill-border: #E3DBC9;
+  --accent-orange: #F26B21;
+  --gradient: linear-gradient(135deg, #F9E5A8 0%, #F7CDA6 45%, #E3B0A4 75%, #D6A0A6 100%);
+  --card-shadow: 0 8px 30px rgba(60, 40, 20, 0.08);
+  --chart-grid: #ECE6CE;
+  --chart-tooltip-bg: #FFFFFF;
+  --chart-tooltip-border: #E9E4D2;
+  --chart-tooltip-text: #1A1714;
+  --danger: #B42318;
+  --warning: #B54708;
+  --success: #067647;
+  color-scheme: light;
+}
+
+html.dark {
+  --bg: #12110F;
+  --ink: #F7F5EC;
+  --ink-muted: #B8B2A6;
+  --ink-subtle: #868075;
+  --line: #2B2824;
+  --outline: #47433B;
+  --card: #1A1916;
+  --pill-bg: rgba(26, 25, 22, 0.75);
+  --pill-active: #292722;
+  --pill-border: #3D3933;
+  --accent-orange: #F97A35;
+  --gradient: linear-gradient(135deg, #3D291C 0%, #342125 45%, #22222E 75%, #182226 100%);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --chart-grid: #292622;
+  --chart-tooltip-bg: #201E1A;
+  --chart-tooltip-border: #3D3933;
+  --chart-tooltip-text: #F7F5EC;
+  --danger: #F04438;
+  --warning: #F79009;
+  --success: #12B76A;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Mono', monospace;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Focus visible ring token matching section 5.3: 2px --ink ring with 3px offset */
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+}
+
+/* Custom scrollbars matching warm brand */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--outline);
+}
