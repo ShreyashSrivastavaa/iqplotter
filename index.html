@@ -102,6 +102,36 @@
               "item": "https://iqplotter.web.app/"
             }
           ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://iqplotter.web.app/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is my data uploaded to a server?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Files are processed locally in your browser. Your data never touches a server."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which file types are supported?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "CSV, TSV, and Excel (.xlsx, .xls) files are fully supported."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is iqplotter free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, 100% free with no sign-up or account required."
+              }
+            }
+          ]
         }
       ]
     }
@@ -126,8 +156,10 @@
       })();
     </script>
 
-    <!-- Favicon -->
+    <!-- Favicon & Icons -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Web manifest -->
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -138,6 +170,56 @@
   </head>
   <body class="bg-bg text-ink font-mono antialiased min-h-screen selection:bg-[#F7CDA6] selection:text-[#1A1714]">
     <div id="root"></div>
+
+    <!-- Visible Crawlable SEO Content for Search Engines & Non-JS Clients -->
+    <main id="seo-content" class="w-full max-w-[1480px] mx-auto px-4 sm:px-8 py-12 border-t border-line font-mono text-ink text-sm">
+      <div class="max-w-4xl space-y-8">
+        <div>
+          <h1 class="font-sans font-extrabold text-2xl sm:text-3xl tracking-tight text-ink mb-3">Free CSV to Chart Generator</h1>
+          <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
+            iqplotter turns CSV and Excel files into bar, line, scatter and pie charts in seconds. Everything runs in your browser, so your data is never uploaded.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-sans font-bold text-lg sm:text-xl tracking-tight text-ink mb-3">How it works</h2>
+          <ol class="list-decimal list-inside space-y-2 text-ink-muted">
+            <li>Drag and drop a CSV or Excel file.</li>
+            <li>Pick the columns for your X and Y axes.</li>
+            <li>Choose a chart type and export it as an image.</li>
+          </ol>
+        </div>
+
+        <div>
+          <h2 class="font-sans font-bold text-lg sm:text-xl tracking-tight text-ink mb-3">Features</h2>
+          <ul class="list-disc list-inside space-y-2 text-ink-muted">
+            <li>Bar, line, scatter and pie charts</li>
+            <li>Automatic data cleaning and type detection</li>
+            <li>Dark mode</li>
+            <li>No account, no upload, free to use</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-sans font-bold text-lg sm:text-xl tracking-tight text-ink mb-3">Frequently asked questions</h2>
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-bold text-ink mb-1">Is my data uploaded to a server?</h3>
+              <p class="text-ink-muted">No. Files are processed locally in your browser.</p>
+            </div>
+            <div>
+              <h3 class="font-bold text-ink mb-1">Which file types are supported?</h3>
+              <p class="text-ink-muted">CSV, TSV and Excel (.xlsx) files.</p>
+            </div>
+            <div>
+              <h3 class="font-bold text-ink mb-1">Is iqplotter free?</h3>
+              <p class="text-ink-muted">Yes, with no sign-up required.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

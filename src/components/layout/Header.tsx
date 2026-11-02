@@ -33,19 +33,22 @@ export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 w-full h-[74px] bg-bg/95 backdrop-blur-md border-b border-line px-4 sm:px-8 transition-colors">
       <div className="max-w-[1480px] h-full mx-auto flex items-center justify-between">
-        {/* Wordmark */}
-        <div className="flex items-center gap-3">
+        {/* Wordmark & Nav */}
+        <div className="flex items-center gap-6">
           <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+            href="/"
             className="font-sans font-extrabold text-[28px] sm:text-[38px] tracking-[-0.04em] text-ink select-none lowercase leading-none flex items-center gap-2 group"
           >
             <span>iqplotter</span>
             <span className="w-2 h-2 rounded-full bg-accent-orange opacity-90 group-hover:scale-125 transition-transform" />
           </a>
+
+          <nav className="hidden lg:flex items-center gap-4 text-xs font-mono text-ink-muted">
+            <a href="/csv-to-chart" className="hover:text-ink transition-colors">CSV to Chart</a>
+            <a href="/excel-to-chart" className="hover:text-ink transition-colors">Excel to Chart</a>
+            <a href="/csv-to-bar-chart" className="hover:text-ink transition-colors">Bar Chart</a>
+            <a href="/csv-to-line-chart" className="hover:text-ink transition-colors">Line Chart</a>
+          </nav>
         </div>
 
         {/* Right actions */}

@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /__/
-Disallow: /auth/
 
 Sitemap: https://iqplotter.web.app/sitemap.xml
