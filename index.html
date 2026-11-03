@@ -5,65 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#FAF7E9" id="theme-color-meta" />
 
-    <!-- Primary meta -->
-    <title>iqplotter | Turn Your CSV Data Into Charts Instantly</title>
+    <!-- Primary Meta Tags -->
+    <title>CSV to Chart – Free Chart Generator & Visualizer | iqplotter</title>
     <meta
       name="description"
-      content="iqplotter is a free CSV to chart tool. Drag-and-drop CSV or Excel files and instantly generate bar, line, scatter, and pie charts — 100% in your browser, private, no account required."
+      content="Convert CSV & Excel to charts online for free. Private in-browser chart generator & CSV visualizer for bar, line, scatter, and pie plots with no data uploaded."
     />
-    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+    <meta name="author" content="iqplotter" />
+    <meta name="application-name" content="iqplotter" />
+    <meta name="generator" content="Vite" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="rating" content="general" />
+
+    <!-- Search Engine Robots Directives -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Canonical & Alternate Locales -->
     <link rel="canonical" href="https://iqplotter.web.app/" />
+    <link rel="alternate" hreflang="en" href="https://iqplotter.web.app/" />
+    <link rel="alternate" hreflang="x-default" href="https://iqplotter.web.app/" />
+
+    <!-- Verification -->
     <meta name="google-site-verification" content="T03o_6YmbMOHae-0qnK1-yLreiukbbKs_1hkiRpEUsg" />
 
-    <!-- Apple mobile web app -->
+    <!-- Apple & Mobile Web App -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="iqplotter" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph (Facebook, LinkedIn, Discord) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://iqplotter.web.app/" />
-    <meta property="og:title" content="iqplotter | Free CSV Chart Generator" />
-    <meta
-      property="og:description"
-      content="Turn raw CSV or Excel data into clear, shareable charts in seconds. 100% private in-browser processing, dark mode, no account needed."
-    />
     <meta property="og:site_name" content="iqplotter" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="CSV to Chart – Free Chart Generator & Visualizer | iqplotter" />
+    <meta
+      property="og:description"
+      content="Convert CSV & Excel to charts online for free. Private in-browser chart generator & CSV visualizer for bar, line, scatter, and pie plots with no data uploaded."
+    />
     <meta property="og:image" content="https://iqplotter.web.app/og-image.png" />
+    <meta property="og:image:secure_url" content="https://iqplotter.web.app/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="iqplotter turning a CSV into a bar chart" />
+    <meta property="og:image:alt" content="iqplotter - Free, private in-browser CSV and Excel to chart generator" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="iqplotter | Turn Your CSV Data Into Charts Instantly" />
+    <meta name="twitter:site" content="@iqplotter" />
+    <meta name="twitter:creator" content="@iqplotter" />
+    <meta name="twitter:title" content="CSV to Chart – Free Chart Generator & Visualizer | iqplotter" />
     <meta
       name="twitter:description"
-      content="Free CSV Chart Generator. Instant plotting, auto-cleaning, dark mode, and privacy-first browser processing."
+      content="Convert CSV & Excel to charts online for free. Private in-browser chart generator & CSV visualizer for bar, line, scatter, and pie plots with no data uploaded."
     />
     <meta name="twitter:image" content="https://iqplotter.web.app/og-image.png" />
+    <meta name="twitter:image:alt" content="iqplotter - Free, private in-browser CSV and Excel to chart generator" />
 
-    <!--
-      hreflang note: This is a client-side SPA. Firebase Hosting serves the same index.html
-      for every URL, so the server cannot vary <head> per route or locale. Per-language
-      hreflang links (e.g. /hi/, /es/) are NOT implemented because no separate localized
-      HTML is served — doing so would be technically incorrect and mislead crawlers.
-      The app detects the user's browser language at runtime and switches the UI accordingly.
-      All crawlers will see the English canonical URL as the authoritative version.
-    -->
+    <!-- Favicon & Icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/favicon.svg" color="#F26B21" />
 
-    <!-- JSON-LD: WebSite + SoftwareApplication -->
+    <!-- Web Manifests -->
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Third-Party Connections & Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- JSON-LD: Structured Data Graph for Search Engines & Generative AI -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "Organization",
+          "@id": "https://iqplotter.web.app/#organization",
+          "name": "iqplotter",
+          "url": "https://iqplotter.web.app/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://iqplotter.web.app/icon-512.png",
+            "width": 512,
+            "height": 512
+          },
+          "sameAs": [
+            "https://github.com/iqplotter",
+            "https://twitter.com/iqplotter",
+            "https://linkedin.com/company/iqplotter"
+          ]
+        },
+        {
           "@type": "WebSite",
           "@id": "https://iqplotter.web.app/#website",
           "url": "https://iqplotter.web.app/",
           "name": "iqplotter",
-          "description": "Free in-browser CSV to chart generator. Supports bar, line, scatter, and pie charts with auto-cleaning and dark mode.",
+          "description": "Free in-browser CSV to chart generator. Turn CSV and Excel files into interactive bar, line, scatter, and pie charts with complete privacy.",
+          "publisher": {
+            "@id": "https://iqplotter.web.app/#organization"
+          },
           "inLanguage": "en"
         },
         {
@@ -71,29 +121,37 @@
           "@id": "https://iqplotter.web.app/#app",
           "name": "iqplotter",
           "url": "https://iqplotter.web.app/",
-          "applicationCategory": "DataVisualizationApplication",
-          "operatingSystem": "Any (runs in browser)",
+          "applicationCategory": ["BusinessApplication", "DataVisualization"],
+          "operatingSystem": "Any (Chrome, Firefox, Safari, Edge)",
+          "browserRequirements": "Requires JavaScript and a modern web browser",
           "offers": {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
           },
-          "description": "Upload a CSV or Excel file and instantly generate interactive bar, line, scatter, or pie charts. Includes data inspection, auto-cleaning, export, and local history. Works entirely in your browser — no uploads, no account required.",
+          "description": "Free in-browser CSV and Excel to chart generator. Upload or paste tabular datasets to instantly generate bar, line, scatter, and pie charts with automatic data cleaning, dark mode, and high-resolution export. 100% private with no server uploads and no account required.",
           "featureList": [
-            "CSV and Excel file support",
             "Bar, line, scatter, and pie chart generation",
-            "Automatic data cleaning and type inference",
-            "Dark mode",
-            "Chart export as PNG and SVG",
-            "Local browser history",
-            "Shareable chart URLs",
-            "9 supported UI languages"
+            "CSV, TSV, TXT, and Excel (.xlsx, .xls) file import",
+            "Automatic data cleaning, header normalization, and type detection",
+            "100% private client-side processing with zero server uploads",
+            "Native warm dark mode and light mode themes",
+            "High-resolution PNG and vector SVG export",
+            "No account, login, or credit card required",
+            "Local browser history with IndexedDB persistence",
+            "Shareable URL encoded charts without backend storage",
+            "9 supported interface languages"
           ],
+          "screenshot": "https://iqplotter.web.app/og-image.png",
           "inLanguage": ["en", "hi", "es", "fr", "de", "pt", "ja", "zh-CN", "ar"],
-          "isAccessibleForFree": true
+          "isAccessibleForFree": true,
+          "author": {
+            "@id": "https://iqplotter.web.app/#organization"
+          }
         },
         {
           "@type": "BreadcrumbList",
+          "@id": "https://iqplotter.web.app/#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -104,31 +162,120 @@
           ]
         },
         {
+          "@type": "HowTo",
+          "@id": "https://iqplotter.web.app/#howto",
+          "name": "How to turn a CSV file into a chart online",
+          "description": "Step-by-step instructions to convert CSV or Excel spreadsheets into interactive charts for free using iqplotter.",
+          "totalTime": "PT1M",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "Upload or Drag and Drop Your File",
+              "text": "Drag and drop your CSV, TSV, or Excel (.xlsx) file into the upload zone or paste raw CSV text."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 2,
+              "name": "Select Chart Type",
+              "text": "Choose from Bar Chart, Line Chart, Scatter Plot, or Pie Chart."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 3,
+              "name": "Map Columns to Axes",
+              "text": "Select which dataset columns to assign to your X-axis and Y-axis."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 4,
+              "name": "Customize and Export",
+              "text": "Adjust color palettes, toggle gridlines, edit chart titles, and click Export to download as PNG or SVG."
+            }
+          ]
+        },
+        {
           "@type": "FAQPage",
           "@id": "https://iqplotter.web.app/#faq",
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Is my data uploaded to a server?",
+              "name": "Is iqplotter free to use?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. Files are processed locally in your browser. Your data never touches a server."
+                "text": "Yes. iqplotter is 100% free with no hidden fees, subscriptions, or credit card requirements."
               }
             },
             {
               "@type": "Question",
-              "name": "Which file types are supported?",
+              "name": "Is my data uploaded to any server or AI model?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "CSV, TSV, and Excel (.xlsx, .xls) files are fully supported."
+                "text": "No. All file parsing, data cleaning, and chart rendering happen 100% in your browser. Your data never leaves your device and is never uploaded to any server or cloud."
               }
             },
             {
               "@type": "Question",
-              "name": "Is iqplotter free?",
+              "name": "Which file formats are supported?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes, 100% free with no sign-up or account required."
+                "text": "iqplotter supports CSV, TSV, plain-text delimited tables, and Microsoft Excel spreadsheets (.xlsx and .xls)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I make a pie chart from a CSV file?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Upload your CSV file, select 'Pie' as the chart type, and choose your category label column and numerical value column. iqplotter automatically calculates proportions and renders the chart."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does iqplotter work offline?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Once the web application loads, all processing runs locally. You can disconnect your internet and continue importing files, cleaning data, and generating charts without interruption."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I export charts as PNG or SVG images?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can export any generated bar, line, scatter, or pie chart as a high-resolution PNG image or scalable vector graphic (SVG)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need to create an account or sign up?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No account or registration is required. You can start creating charts immediately upon visiting the website."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does automatic data cleaning work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "iqplotter's built-in inspector scans your columns, infers data types (numbers, dates, text), strips currency signs and commas, removes empty rows, and flags anomalies automatically."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is there a file size limit for CSV or Excel uploads?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Because processing is in-memory inside your browser, iqplotter comfortably handles datasets with tens of thousands of rows up to 10 MB."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I customize chart colors and enable dark mode?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. iqplotter supports toggleable dark mode and light mode, accessible contrast color palettes, editable chart titles, and customizable axis formatting."
               }
             }
           ]
@@ -155,48 +302,52 @@
         } catch (e) {}
       })();
     </script>
-
-    <!-- Favicon & Icons -->
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
-    <!-- Web manifest -->
-    <link rel="manifest" href="/manifest.webmanifest" />
-
-    <!-- Preconnect for Google Fonts used at runtime by Firebase auth popup -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body class="bg-bg text-ink font-mono antialiased min-h-screen selection:bg-[#F7CDA6] selection:text-[#1A1714]">
+    <!-- Non-JavaScript fallback for accessibility and search engine crawlers -->
+    <noscript>
+      <div style="background:#FAF7E9;color:#1A1714;padding:24px;border-bottom:2px solid #F26B21;font-family:sans-serif;line-height:1.6;">
+        <h2 style="margin:0 0 8px 0;font-size:20px;">iqplotter – Free In-Browser CSV to Chart Generator</h2>
+        <p style="margin:0 0 12px 0;">
+          iqplotter converts CSV and Excel files into bar, line, scatter, and pie charts instantly in your browser. All processing is 100% client-side with complete privacy and zero data uploads.
+        </p>
+        <p style="margin:0 0 12px 0;font-size:14px;color:#5C574D;">
+          Please enable JavaScript in your browser settings to interactively import files, inspect datasets, and export high-resolution chart images.
+        </p>
+      </div>
+    </noscript>
+
+    <!-- Interactive SPA Root Container -->
     <div id="root"></div>
 
-    <!-- Visible Crawlable SEO Content for Search Engines & Non-JS Clients -->
-    <main id="seo-content" class="w-full max-w-[1480px] mx-auto px-4 sm:px-8 py-12 border-t border-line font-mono text-ink text-sm">
+    <!-- Visible Crawlable SEO Content for Search Engines, AI Agents & Readers -->
+    <section id="seo-content" aria-label="About iqplotter CSV and Excel Chart Generator" class="w-full max-w-[1480px] mx-auto px-4 sm:px-8 py-12 border-t border-line font-mono text-ink text-sm">
       <div class="max-w-4xl space-y-8">
         <div>
           <h1 class="font-sans font-extrabold text-2xl sm:text-3xl tracking-tight text-ink mb-3">Free CSV to Chart Generator</h1>
           <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
-            iqplotter turns CSV and Excel files into bar, line, scatter and pie charts in seconds. Everything runs in your browser, so your data is never uploaded.
+            iqplotter turns CSV and Excel files into bar, line, scatter and pie charts in seconds. Everything runs in your browser, so your data is never uploaded to any server.
           </p>
         </div>
 
         <div>
           <h2 class="font-sans font-bold text-lg sm:text-xl tracking-tight text-ink mb-3">How it works</h2>
           <ol class="list-decimal list-inside space-y-2 text-ink-muted">
-            <li>Drag and drop a CSV or Excel file.</li>
+            <li>Drag and drop a CSV, TSV, or Excel (.xlsx) file, or paste raw tabular text.</li>
             <li>Pick the columns for your X and Y axes.</li>
-            <li>Choose a chart type and export it as an image.</li>
+            <li>Choose a chart type (Bar, Line, Scatter, or Pie) and export it as PNG or SVG.</li>
           </ol>
         </div>
 
         <div>
           <h2 class="font-sans font-bold text-lg sm:text-xl tracking-tight text-ink mb-3">Features</h2>
           <ul class="list-disc list-inside space-y-2 text-ink-muted">
-            <li>Bar, line, scatter and pie charts</li>
-            <li>Automatic data cleaning and type detection</li>
-            <li>Dark mode</li>
-            <li>No account, no upload, free to use</li>
+            <li>Interactive bar, line, scatter, and pie charts</li>
+            <li>Automatic data cleaning, currency scrubbing, and type detection</li>
+            <li>100% private client-side processing — zero server uploads</li>
+            <li>High-resolution PNG and vector SVG export</li>
+            <li>Dark mode and accessible high-contrast palettes</li>
+            <li>Free to use with no account or sign-up required</li>
           </ul>
         </div>
 
@@ -205,20 +356,38 @@
           <div class="space-y-4">
             <div>
               <h3 class="font-bold text-ink mb-1">Is my data uploaded to a server?</h3>
-              <p class="text-ink-muted">No. Files are processed locally in your browser.</p>
+              <p class="text-ink-muted">No. Files are processed locally in your browser memory. Your data never leaves your computer.</p>
             </div>
             <div>
               <h3 class="font-bold text-ink mb-1">Which file types are supported?</h3>
-              <p class="text-ink-muted">CSV, TSV and Excel (.xlsx) files.</p>
+              <p class="text-ink-muted">CSV, TSV, plain-text delimited tables, and Excel (.xlsx, .xls) files are supported.</p>
             </div>
             <div>
               <h3 class="font-bold text-ink mb-1">Is iqplotter free?</h3>
-              <p class="text-ink-muted">Yes, with no sign-up required.</p>
+              <p class="text-ink-muted">Yes, 100% free with no sign-up or subscription required.</p>
+            </div>
+            <div>
+              <h3 class="font-bold text-ink mb-1">Does iqplotter work offline?</h3>
+              <p class="text-ink-muted">Yes. Once loaded, all file parsing and charting run offline in your browser.</p>
             </div>
           </div>
         </div>
+
+        <div class="pt-4 border-t border-line text-xs text-ink-subtle">
+          <p>
+            Explore dedicated guides:
+            <a href="/csv-to-chart" class="underline hover:text-ink">CSV to Chart</a> ·
+            <a href="/excel-to-chart" class="underline hover:text-ink">Excel to Chart</a> ·
+            <a href="/csv-to-bar-chart" class="underline hover:text-ink">CSV to Bar Chart</a> ·
+            <a href="/csv-to-line-chart" class="underline hover:text-ink">CSV to Line Chart</a> ·
+            <a href="/csv-to-line-graph" class="underline hover:text-ink">CSV to Line Graph</a> ·
+            <a href="/csv-to-pie-chart" class="underline hover:text-ink">CSV to Pie Chart</a> ·
+            <a href="/csv-to-scatter-plot" class="underline hover:text-ink">CSV to Scatter Plot</a> ·
+            <a href="/privacy" class="underline hover:text-ink">Privacy Policy</a>
+          </p>
+        </div>
       </div>
-    </main>
+    </section>
 
     <script type="module" src="/src/main.tsx"></script>
   </body>

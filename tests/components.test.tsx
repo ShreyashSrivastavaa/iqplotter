@@ -49,7 +49,7 @@ describe('Component - IngestionPanel', () => {
     expect(screen.getByText(/Drag & drop your CSV here/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /browse files/i })).toBeInTheDocument();
     expect(screen.getByText(/Monthly sales/i)).toBeInTheDocument();
-    expect(screen.getByText(/Daily temperature/i)).toBeInTheDocument();
+    expect(screen.getByText(/Daily (weather|temperature)/i)).toBeInTheDocument();
     expect(screen.getByText(/Exam scores/i)).toBeInTheDocument();
     expect(screen.getByText(/Processed in your browser. Never uploaded./i)).toBeInTheDocument();
   });

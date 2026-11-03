@@ -56,12 +56,18 @@ server.listen(PORT, async () => {
     '/excel-to-chart',
     '/csv-to-bar-chart',
     '/csv-to-line-chart',
+    '/csv-to-line-graph',
     '/csv-to-pie-chart',
     '/csv-to-scatter-plot',
     '/privacy',
     '/og-image.png',
     '/sitemap.xml',
     '/robots.txt',
+    '/llms.txt',
+    '/llms-full.txt',
+    '/humans.txt',
+    '/.well-known/security.txt',
+    '/site.webmanifest',
     '/non-existent-route-for-testing'
   ];
 

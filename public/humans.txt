@@ -1,0 +1,17 @@
+/* TEAM */
+Developer: iqplotter Team
+Site: https://iqplotter.web.app/
+Contact: hello@iqplotter.web.app
+Twitter: @iqplotter
+Location: Worldwide
+
+/* THANKS */
+Open Source Community: React, Vite, Recharts, PapaParse, read-excel-file, Tailwind CSS, Lucide Icons, Fontsource
+
+/* SITE */
+Last update: 2026/11/03
+Language: English (with 9 UI locales supported)
+Doctype: HTML5
+Standards: HTML5, CSS3, ES2024, Web Workers, IndexedDB
+IDE: Antigravity
+Hosting: Firebase Hosting

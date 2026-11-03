@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import 'fake-indexeddb/auto';
+import './lib/i18n';
 
 // Polyfill window.scrollTo
 window.scrollTo = () => {};

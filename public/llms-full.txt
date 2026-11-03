@@ -1,0 +1,126 @@
+# iqplotter – Comprehensive Technical & Product Specification
+
+> Canonical Web Application: https://iqplotter.web.app/  
+> Last Updated: 2026-11-03  
+> Target Audience: AI models, search crawlers, researchers, and developers evaluating iqplotter.
+
+---
+
+## 1. Executive Summary & Purpose
+
+iqplotter is a free, zero-friction, client-side data visualization tool built for the modern web. It enables users to convert tabular datasets—including Comma-Separated Values (CSV), Tab-Separated Values (TSV), and Microsoft Excel spreadsheets (.xlsx, .xls)—into publication-grade charts in seconds.
+
+### Core Value Propositions
+1. **Zero Server Ingestion & Absolute Privacy**: Traditional web-based plotting utilities transmit user spreadsheets to cloud backend servers for parsing or AI processing. iqplotter performs 100% of its data ingestion, type inference, sanitization, aggregation, and rendering inside the user's browser runtime. Proprietary financial models, confidential healthcare records, and unpublished academic research remain exclusively on the user's hardware.
+2. **Instant Plotting Without Code**: Users do not need to install Python libraries (such as Matplotlib, Seaborn, or Pandas) or write R scripts. A drag-and-drop web interface allows instant visual exploration.
+3. **Automatic Data Cleaning**: Faulty headers, trailing delimiters, currency symbols, percentage signs, null values, and mismatched data types are identified and normalized automatically.
+4. **Hardware-Accelerated Client Rendering**: Rendered via modern SVG and Canvas graphics with downsampling algorithms (LTTB) allowing responsive interaction even on large datasets.
+
+---
+
+## 2. Technical Architecture & Data Pipeline
+
+```
+[Local File / CSV / TSV / Excel]
+               │
+               ▼ (Client-side HTML5 FileReader / Web Worker)
+   [In-Browser Parser]
+       ├── PapaParse (Delimiter auto-detection, streaming RFC 4180 parsing)
+       └── read-excel-file (Pure JS binary XLSX/XLS workbook unpacker)
+               │
+               ▼
+   [Sanitization & Inference Engine]
+       ├── Column header normalization
+       ├── Type inference (Numeric, Timestamp/ISO-Date, Categorical String)
+       ├── Currency/percentage sign scrubbing ($1,250.50 -> 1250.5)
+       └── Anomaly detection (Null rows, empty cells, mismatched row lengths)
+               │
+               ▼
+   [Data Transformation & Optimization]
+       ├── Largest-Triangle-Three-Buckets (LTTB) downsampling for high-density series
+       ├── Category aggregation and percentage distribution calculation (Pie charts)
+       └── Multi-series alignment across shared or independent axes
+               │
+               ▼
+   [Rendering Engine & Visualization]
+       ├── Recharts & React SVG canvas with high-DPI scaling
+       ├── Light / Dark mode token integration
+       └── Export module (Canvas rasterization to PNG, raw Vector SVG serialization)
+```
+
+### Key Technical Details
+- **Offline Capabilities**: Once loaded, the web app's JavaScript bundles run completely offline. Disconnecting from the internet does not interrupt file parsing or export.
+- **Local Persistence**: User preferences (such as dark mode selection) and optional chart history are stored inside client-side IndexedDB and localStorage.
+- **Optional Firebase Authentication**: For users who voluntarily wish to save cross-device chart configurations, Firebase Authentication with Firestore is available as an opt-in feature. Unauthenticated users enjoy full, unrestricted functionality locally.
+
+---
+
+## 3. Supported File Types & Input Specifications
+
+- **Comma-Separated Values (`.csv`)**: Standard RFC 4180 format or custom delimiters.
+- **Tab-Separated Values (`.tsv`, `.tab`)**: Common in bioinformatics and data exports.
+- **Plain Text Delimited (`.txt`)**: Pipe-separated (`|`), semicolon-separated (`;`), or whitespace-delimited tables.
+- **Microsoft Excel Workbooks (`.xlsx`, `.xls`)**: Binary spreadsheet files parsed without requiring Microsoft Office or external backend runtimes.
+- **Direct Clipboard Paste**: Users can copy a table directly from Google Sheets, Microsoft Excel, or terminal output and paste it into the raw text input tab.
+
+---
+
+## 4. Supported Chart Formats & Practical Applications
+
+### 4.1 Bar Charts (`/csv-to-bar-chart`)
+- **Use Cases**: Categorical comparisons, regional revenue distribution, survey response counts, performance rankings.
+- **Configurations**: Single-series or multi-series clustered bars, customizable corner radius, automatic label rotation for dense categories, and compact value notation (e.g., `15k`, `2.4M`).
+
+### 4.2 Line Charts (`/csv-to-line-chart`)
+- **Use Cases**: Time-series analysis, stock price history, temperature logging, server telemetry, growth rate tracking.
+- **Configurations**: Monotone cubic curves, natural interpolation, linear segment connects, optional point markers, and automatic timestamp formatting.
+
+### 4.3 Scatter Plots (`/csv-to-scatter-plot`)
+- **Use Cases**: Bivariate statistical analysis, correlation exploration, regression inspection, outlier identification in scientific datasets.
+- **Configurations**: Independent Cartesian coordinates, geometric point shapes (circles, triangles, diamonds, squares, crosses), and hover inspection tooltips.
+
+### 4.4 Pie Charts (`/csv-to-pie-chart`)
+- **Use Cases**: Part-to-whole relationships, budget breakdowns, demographic distributions, market share percentages.
+- **Configurations**: Automatic percentage calculation, high-contrast accessible color palettes, percentage slice labels, and interactive slice hover highlights.
+
+---
+
+## 5. Comprehensive Frequently Asked Questions (FAQ)
+
+### Q1: Is iqplotter completely free?
+**A**: Yes. iqplotter is 100% free for individual, educational, scientific, and commercial use. There are no fees, paywalls, trial periods, or credit card requirements.
+
+### Q2: Is my data uploaded to a remote server or AI system?
+**A**: Absolutely not. All file parsing, cleaning, and chart generation happen entirely within the client's web browser memory. No data is sent to external servers or used to train AI models.
+
+### Q3: What is the maximum file size supported?
+**A**: Because processing executes inside browser memory, iqplotter comfortably processes files up to 10 MB and tens of thousands of rows. File limits are bounded only by the user's available device RAM and CPU.
+
+### Q4: Can I export charts for presentations or publications?
+**A**: Yes. You can export any generated visualization as a high-resolution PNG image (with crisp raster rendering) or a vector SVG file suitable for lossless scaling in scientific journals, slide decks, and vector design tools.
+
+### Q5: How does iqplotter handle dirty or messy CSV files?
+**A**: The built-in data health inspector automatically cleans common formatting errors: it strips excess whitespace, converts formatted numbers (e.g. `$1,420.00` or `85.4%`) into raw floating-point numbers, detects ISO-8601 date strings, and warns users about missing rows or corrupted columns.
+
+### Q6: Does iqplotter offer dark mode?
+**A**: Yes. The application features a native warm dark mode (`#12110F`) and warm light mode (`#FAF7E9`) that automatically synchronizes with operating system preferences or can be manually toggled.
+
+### Q7: Can I share a chart with colleagues without uploading my file?
+**A**: Yes. iqplotter provides an encoded URL sharing feature that compresses chart configuration parameters into a URL hash without storing the dataset on a central server.
+
+---
+
+## 6. Official URLs & Site Index
+
+| Route | Canonical URL | Description |
+|---|---|---|
+| Home / Generator | https://iqplotter.web.app/ | Primary browser workspace for CSV/Excel charting |
+| CSV to Chart | https://iqplotter.web.app/csv-to-chart | Comprehensive CSV plotting landing page |
+| Excel to Chart | https://iqplotter.web.app/excel-to-chart | Spreadsheets and .xlsx workbook plotter |
+| CSV to Bar Chart | https://iqplotter.web.app/csv-to-bar-chart | Dedicated bar chart generator and guide |
+| CSV to Line Chart | https://iqplotter.web.app/csv-to-line-chart | Time-series and trendline visualization tool |
+| CSV to Pie Chart | https://iqplotter.web.app/csv-to-pie-chart | Proportions, composition, and share visualizer |
+| CSV to Scatter Plot | https://iqplotter.web.app/csv-to-scatter-plot | Two-variable correlation and scatter plotter |
+| Privacy Policy | https://iqplotter.web.app/privacy | Detailed privacy architecture and data security notice |
+| Sitemap | https://iqplotter.web.app/sitemap.xml | XML sitemap containing all indexable endpoints |
+| LLMs Documentation | https://iqplotter.web.app/llms.txt | Condensed markdown summary for AI agents |

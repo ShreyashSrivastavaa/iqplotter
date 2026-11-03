@@ -136,6 +136,20 @@ async function main() {
   console.log(`og-image.png generated: ${(ogStats.size / 1024).toFixed(1)} KB (target < 300KB)`);
 
   // 2. Generate icons from favicon.svg
+  // favicon-16x16.png (16x16)
+  console.log('Generating favicon-16x16.png (16x16)...');
+  await sharp(Buffer.from(faviconSvg))
+    .resize(16, 16)
+    .png()
+    .toFile(path.join(outDir, 'favicon-16x16.png'));
+
+  // favicon-32x32.png (32x32)
+  console.log('Generating favicon-32x32.png (32x32)...');
+  await sharp(Buffer.from(faviconSvg))
+    .resize(32, 32)
+    .png()
+    .toFile(path.join(outDir, 'favicon-32x32.png'));
+
   // apple-touch-icon.png (180x180)
   console.log('Generating apple-touch-icon.png (180x180)...');
   await sharp(Buffer.from(faviconSvg))

@@ -7,7 +7,7 @@ const pages = [
   {
     slug: "csv-to-chart",
     title: "CSV to Chart Generator – Free & Private | iqplotter",
-    desc: "Turn any CSV file into an interactive chart online. Free, no account needed, and 100% in-browser processing keeps your sensitive data private.",
+    desc: "Convert CSV to chart online in seconds. Free in-browser CSV visualizer supporting bar, line, scatter & pie charts with zero uploads and complete privacy.",
     h1: "Convert CSV to Chart Online",
     breadcrumb: "CSV to Chart",
     intro: `
@@ -17,8 +17,19 @@ const pages = [
       <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         Unlike traditional spreadsheet tools that require steep learning curves or cloud platforms that force you to upload sensitive company figures, customer records, or financial metrics to external servers, iqplotter operates entirely on the client side. Your records are parsed in local memory using Web Workers and modern JavaScript engines, guaranteeing that your data remains strictly confidential and never leaves your computer.
       </p>
-      <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         Whether you need to generate high-resolution bar charts for executive meetings, line charts to monitor time-series trends, or scatter plots for exploratory correlation analysis, simply select your columns from the intuitive interface above and customize titles, colors, and formatting with zero setup.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        Our built-in data health inspector automatically cleans common formatting errors: it strips excess whitespace, converts formatted numbers (e.g. $1,420.00 or 85.4%) into clean numerical values, detects ISO-8601 date strings, and warns you about missing rows or corrupted columns.
+      </p>
+      <p class="text-xs text-ink-subtle pt-2 border-t border-line">
+        Related chart types: 
+        <a href="/csv-to-bar-chart" class="underline hover:text-ink">Bar Chart</a> · 
+        <a href="/csv-to-line-chart" class="underline hover:text-ink">Line Chart</a> · 
+        <a href="/csv-to-pie-chart" class="underline hover:text-ink">Pie Chart</a> · 
+        <a href="/csv-to-scatter-plot" class="underline hover:text-ink">Scatter Plot</a> · 
+        <a href="/excel-to-chart" class="underline hover:text-ink">Excel to Chart</a>
       </p>
     `
   },
@@ -30,13 +41,23 @@ const pages = [
     breadcrumb: "Excel to Chart",
     intro: `
       <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
-        Microsoft Excel (.xlsx and .xls) files are the bedrock of workplace accounting, scientific measurement, inventory logging, and project estimation. However, configuring native spreadsheet charting engines often feels tedious, cluttered with dialog menus, or rigid when you need to quickly inspect new worksheets.
+        Microsoft Excel (.xlsx and .xls) files are the bedrock of workplace accounting, scientific measurement, inventory logging, and project estimation. However, configuring native spreadsheet charting engines often feels tedious, cluttered with dialog menus, or rigid when you need to quickly inspect new worksheets without launching bloated desktop suites.
       </p>
       <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         iqplotter provides an effortless, modern alternative designed for speed, beauty, and security. Drop any workbook directly into our workspace: our in-browser reader automatically detects headers, recognizes date and numerical values, cleans anomalous empty records, and lets you toggle between chart types with a single click.
       </p>
-      <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         Because every calculation runs directly inside your browser's runtime, confidential balance sheets, proprietary client listings, and internal operating expenses remain safe from third-party interception. Export crisp PNG or vector SVG visuals instantly to paste directly into slides, reports, or team wikis.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        You can also copy tabular ranges directly from Microsoft Excel or Google Sheets and paste them as raw text into our ingestion panel for immediate visualization without needing to save separate files.
+      </p>
+      <p class="text-xs text-ink-subtle pt-2 border-t border-line">
+        Related chart types: 
+        <a href="/csv-to-chart" class="underline hover:text-ink">CSV to Chart</a> · 
+        <a href="/csv-to-bar-chart" class="underline hover:text-ink">Bar Chart</a> · 
+        <a href="/csv-to-line-chart" class="underline hover:text-ink">Line Chart</a> · 
+        <a href="/csv-to-pie-chart" class="underline hover:text-ink">Pie Chart</a>
       </p>
     `
   },
@@ -53,8 +74,18 @@ const pages = [
       <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         Simply drag your CSV table into the generator above. Our system automatically identifies categorical labels for your horizontal X-axis and continuous numerical metrics for your vertical Y-axis. You can quickly inspect the parsed data table, identify missing entries with our built-in data health inspector, and adjust chart parameters on the fly.
       </p>
-      <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         Bar plots created with iqplotter are optimized for both light and dark backgrounds, offering modern contrast palettes, legible typography, and seamless high-DPI image exports. Best of all, no account registration or cloud transfer is ever required.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        Customize bar corner radius, toggle subtle gridlines, and inspect individual data bars using interactive tooltips with automatic thousand and million abbreviations (e.g. 24k, 1.8M).
+      </p>
+      <p class="text-xs text-ink-subtle pt-2 border-t border-line">
+        Related chart types: 
+        <a href="/csv-to-line-chart" class="underline hover:text-ink">Line Chart</a> · 
+        <a href="/csv-to-pie-chart" class="underline hover:text-ink">Pie Chart</a> · 
+        <a href="/csv-to-scatter-plot" class="underline hover:text-ink">Scatter Plot</a> · 
+        <a href="/excel-to-chart" class="underline hover:text-ink">Excel to Chart</a>
       </p>
     `
   },
@@ -71,8 +102,46 @@ const pages = [
       <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         iqplotter allows you to feed raw CSV time-series data directly into our charting canvas. The parser handles timestamp formats, linear numeric sequences, and multi-record measurements without reformatting or manual spreadsheet cleaning. Toggle between smoothed lines, sharp transitions, or dot markers to suit your presentation needs.
       </p>
-      <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         Experience zero lag with our hardware-accelerated charting engine. Since all data parsing and rendering executes locally within your client session, your telemetry, health records, or market analyses stay securely on your device.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        For datasets with thousands of observations, iqplotter uses the Largest-Triangle-Three-Buckets (LTTB) algorithm to preserve visual peaks and troughs while keeping browser rendering smooth and lightweight.
+      </p>
+      <p class="text-xs text-ink-subtle pt-2 border-t border-line">
+        Related chart types: 
+        <a href="/csv-to-line-graph" class="underline hover:text-ink">Line Graph</a> · 
+        <a href="/csv-to-bar-chart" class="underline hover:text-ink">Bar Chart</a> · 
+        <a href="/csv-to-scatter-plot" class="underline hover:text-ink">Scatter Plot</a> · 
+        <a href="/csv-to-pie-chart" class="underline hover:text-ink">Pie Chart</a>
+      </p>
+    `
+  },
+  {
+    slug: "csv-to-line-graph",
+    title: "CSV to Line Graph Maker – Free Plotter Online | iqplotter",
+    desc: "Convert CSV data into clean, interactive line graphs online. Free, 100% private in-browser tool for tracking changes over time with high precision.",
+    h1: "CSV to Line Graph Maker",
+    breadcrumb: "CSV to Line Graph",
+    intro: `
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        Line graphs are vital tools for visual storytelling across science, finance, engineering, and digital analytics. Whether you are illustrating historical climate patterns, monitoring weekly active user growth, or analyzing sensor readings, a well-plotted line graph reveals trajectories and rate of change at a single glance.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        With iqplotter's line graph generator, creating charts from CSV files takes seconds. Simply drag and drop your data file, assign your time or date column to the X-axis, and select one or more numeric metrics for the Y-axis. The tool automatically sorts and spaces data points accurately along continuous dimensions.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        All operations run strictly inside your browser. No files are transferred to remote servers, making iqplotter ideal for processing confidential metrics, proprietary performance logs, and academic research. Once your line graph is configured, export it as a high-resolution PNG or vector SVG with a single click.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        Choose from multiple curve interpolation styles including monotone cubic smoothing, linear segments, or step transitions, with full support for light and dark themes.
+      </p>
+      <p class="text-xs text-ink-subtle pt-2 border-t border-line">
+        Related chart types: 
+        <a href="/csv-to-line-chart" class="underline hover:text-ink">Line Chart</a> · 
+        <a href="/csv-to-bar-chart" class="underline hover:text-ink">Bar Chart</a> · 
+        <a href="/csv-to-scatter-plot" class="underline hover:text-ink">Scatter Plot</a> · 
+        <a href="/excel-to-chart" class="underline hover:text-ink">Excel to Chart</a>
       </p>
     `
   },
@@ -89,8 +158,18 @@ const pages = [
       <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         Using iqplotter, generating a pie or donut visualization from a CSV file requires only selecting the category label column and the corresponding numerical value column. The algorithm aggregates slices, calculates percentage proportions automatically, and assigns distinct, aesthetically pleasing color gradients that remain legible in both light and dark presentation slides.
       </p>
-      <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         Say goodbye to bloated office suites and mandatory logins. Your dataset is evaluated strictly inside your browser window, keeping sensitive internal operational summaries private and safeguarded.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        Hover over individual slices to view precise counts and exact percentages, and download clean SVG or PNG exports ready for inclusion in boardroom slides and research papers.
+      </p>
+      <p class="text-xs text-ink-subtle pt-2 border-t border-line">
+        Related chart types: 
+        <a href="/csv-to-bar-chart" class="underline hover:text-ink">Bar Chart</a> · 
+        <a href="/csv-to-chart" class="underline hover:text-ink">CSV to Chart</a> · 
+        <a href="/excel-to-chart" class="underline hover:text-ink">Excel to Chart</a> · 
+        <a href="/csv-to-scatter-plot" class="underline hover:text-ink">Scatter Plot</a>
       </p>
     `
   },
@@ -107,8 +186,18 @@ const pages = [
       <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         With iqplotter's scatter plot maker, exploring correlations in your CSV datasets is effortless. Simply upload your raw dataset, map two numerical columns to the X and Y axes, and let the tool render the points in real time. Hover over individual observations to inspect precise coordinates and detect anomalous readings without writing Python or R scripts.
       </p>
-      <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         All calculations take place client-side in your web browser. Confidential experimental trials, academic datasets, and financial forecasts are processed with absolute privacy and speed.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
+        Support for multi-series scattering with distinct marker glyphs (circles, triangles, squares, diamonds, and crosses) makes comparing separate experiment conditions seamless.
+      </p>
+      <p class="text-xs text-ink-subtle pt-2 border-t border-line">
+        Related chart types: 
+        <a href="/csv-to-line-chart" class="underline hover:text-ink">Line Chart</a> · 
+        <a href="/csv-to-bar-chart" class="underline hover:text-ink">Bar Chart</a> · 
+        <a href="/csv-to-pie-chart" class="underline hover:text-ink">Pie Chart</a> · 
+        <a href="/excel-to-chart" class="underline hover:text-ink">Excel to Chart</a>
       </p>
     `
   },
@@ -128,8 +217,11 @@ const pages = [
       <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         <strong>Local Storage & Preferences:</strong> Your color theme preference (dark/light mode) and optional chart history are saved exclusively in your browser's local IndexedDB and localStorage storage mechanisms. You retain complete ownership and can clear local data at any time via your browser settings.
       </p>
-      <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base mb-4">
         <strong>Authentication & Cloud Sync (Optional):</strong> If you choose to log in using Google Authentication to save charts across devices, only your explicitly selected saved chart configurations are synchronized to your authenticated Firebase Firestore profile. Unauthenticated sessions remain 100% local.
+      </p>
+      <p class="text-ink-muted leading-relaxed text-sm sm:text-base">
+        <strong>Security Disclosures:</strong> For security queries or vulnerabilities, please review our RFC 9116 security policy at <a href="/.well-known/security.txt" class="underline hover:text-ink">/.well-known/security.txt</a>.
       </p>
     `
   }
@@ -143,6 +235,7 @@ for (const p of pages) {
   // Build breadcrumb item
   const breadcrumbJson = JSON.stringify({
     "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -161,13 +254,13 @@ for (const p of pages) {
 
   let html = template
     .replace(/<title>.*?<\/title>/s, `<title>${p.title}</title>`)
-    .replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${p.desc}">`)
-    .replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${url}">`)
-    .replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${url}">`)
-    .replace(/<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${p.title}">`)
-    .replace(/<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${p.desc}">`)
-    .replace(/<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${p.title}">`)
-    .replace(/<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${p.desc}">`)
+    .replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${p.desc}" />`)
+    .replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${url}" />`)
+    .replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${url}" />`)
+    .replace(/<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${p.title}" />`)
+    .replace(/<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${p.desc}" />`)
+    .replace(/<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${p.title}" />`)
+    .replace(/<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${p.desc}" />`)
     // Replace H1 and intro paragraph in visible #seo-content
     .replace(
       /<h1 class="font-sans font-extrabold text-2xl sm:text-3xl tracking-tight text-ink mb-3">.*?<\/h1>\s*<p class="text-ink-muted leading-relaxed text-sm sm:text-base">.*?<\/p>/s,
@@ -175,7 +268,7 @@ for (const p of pages) {
     )
     // Update breadcrumb in JSON-LD
     .replace(
-      /\{\s*"@type":\s*"BreadcrumbList",\s*"itemListElement":\s*\[\s*\{\s*"@type":\s*"ListItem",\s*"position":\s*1,\s*"name":\s*"Home",\s*"item":\s*"https:\/\/iqplotter\.web\.app\/"\s*\}\s*\]\s*\}/s,
+      /\{\s*"@type":\s*"BreadcrumbList",\s*"@id":\s*"https:\/\/iqplotter\.web\.app\/#breadcrumb",\s*"itemListElement":\s*\[\s*\{\s*"@type":\s*"ListItem",\s*"position":\s*1,\s*"name":\s*"Home",\s*"item":\s*"https:\/\/iqplotter\.web\.app\/"\s*\}\s*\]\s*\}/s,
       breadcrumbJson
     );
 
@@ -187,14 +280,15 @@ for (const p of pages) {
 // Generate sitemap.xml
 const today = new Date().toISOString().split("T")[0];
 const sitemapPages = [
-  { path: "", priority: "1.0" },
-  { path: "csv-to-chart", priority: "0.9" },
-  { path: "excel-to-chart", priority: "0.9" },
-  { path: "csv-to-bar-chart", priority: "0.8" },
-  { path: "csv-to-line-chart", priority: "0.8" },
-  { path: "csv-to-pie-chart", priority: "0.8" },
-  { path: "csv-to-scatter-plot", priority: "0.8" },
-  { path: "privacy", priority: "0.3" }
+  { path: "", priority: "1.0", changefreq: "weekly" },
+  { path: "csv-to-chart", priority: "0.9", changefreq: "weekly" },
+  { path: "excel-to-chart", priority: "0.9", changefreq: "weekly" },
+  { path: "csv-to-bar-chart", priority: "0.8", changefreq: "weekly" },
+  { path: "csv-to-line-chart", priority: "0.8", changefreq: "weekly" },
+  { path: "csv-to-line-graph", priority: "0.8", changefreq: "weekly" },
+  { path: "csv-to-pie-chart", priority: "0.8", changefreq: "weekly" },
+  { path: "csv-to-scatter-plot", priority: "0.8", changefreq: "weekly" },
+  { path: "privacy", priority: "0.4", changefreq: "monthly" }
 ];
 
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -202,7 +296,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 ${sitemapPages
   .map(
     (page) =>
-      `  <url><loc>${base}/${page.path ? page.path : ""}</loc><lastmod>${today}</lastmod><priority>${page.priority}</priority></url>`
+      `  <url><loc>${base}/${page.path ? page.path : ""}</loc><lastmod>${today}</lastmod><changefreq>${page.changefreq}</changefreq><priority>${page.priority}</priority></url>`
   )
   .join("\n")}
 </urlset>

@@ -1,0 +1,61 @@
+# iqplotter
+
+> Free, private, 100% in-browser CSV and Excel to chart generator. Turn tabular data into interactive bar, line, scatter, and pie charts instantly with zero server uploads and no account required.
+
+- **Website**: https://iqplotter.web.app/
+- **License**: Free to use (Web application)
+- **Architecture**: 100% Client-side (HTML5 FileReader, Web Workers, Canvas/SVG, Recharts)
+- **Privacy Model**: Zero server ingestion. Data never leaves the user's browser.
+- **Sitemap**: https://iqplotter.web.app/sitemap.xml
+
+## Overview
+
+iqplotter is an open web utility designed for students, researchers, data analysts, journalists, and software engineers who need to quickly visualize tabular data without uploading sensitive files to cloud servers or dealing with complex spreadsheet menus.
+
+## Key Capabilities
+
+- **Instant Chart Generation**: Drag and drop CSV, TSV, or Excel (.xlsx, .xls) files to plot graphs in seconds.
+- **Supported Chart Types**:
+  - **Bar Charts**: Categorical comparisons, revenue tracking, ranking, and distributions.
+  - **Line Charts**: Time-series progression, continuous metrics, and sensor/stock trends.
+  - **Scatter Plots**: Two-variable correlation analysis, outlier detection, and scientific measurements.
+  - **Pie Charts**: Composition, proportion, budget allocation, and market share.
+- **Auto Data Cleaning & Type Detection**: Built-in inspector identifies numeric, date, and text columns, strips anomalies, trims whitespace, and flags missing entries.
+- **High-Performance Downsampling**: Uses the Largest-Triangle-Three-Buckets (LTTB) algorithm to smoothly display datasets with tens of thousands of data points without UI lag.
+- **Privacy & Security**: All parsing and rendering execute locally in the browser runtime. Works completely offline after initial page load.
+- **Export Options**: Export high-DPI PNG images or vector SVG files suitable for publications, presentations, and reports.
+- **Visual Ergonomics**: Light and dark mode support, custom palettes, editable titles, and responsive axes.
+- **Multilingual**: Supports 9 languages (English, Hindi, Spanish, French, German, Portuguese, Japanese, Simplified Chinese, Arabic).
+
+## How to Use iqplotter
+
+1. **Import File**: Drag and drop a CSV, TSV, or Excel file onto https://iqplotter.web.app/, or click "Browse files". You can also paste raw CSV text directly.
+2. **Configure Columns**: Select the X-axis (independent variable or category) and Y-axis (dependent numerical variable).
+3. **Select Chart Type**: Toggle between Bar, Line, Scatter, or Pie views with one click.
+4. **Customize & Export**: Adjust palette, toggle gridlines or dots, edit titles, and click "Export" to download a PNG or SVG.
+
+## Frequently Asked Questions
+
+### Is iqplotter free?
+Yes. iqplotter is 100% free with no subscriptions, fees, or hidden paywalls.
+
+### Is my data uploaded to any server or AI model?
+No. All file reading, data transformations, and rendering run strictly in local browser memory. Files are never uploaded or transmitted across the network.
+
+### Which file formats are supported?
+CSV, TSV, plain-text delimiter-separated values, and Excel (.xlsx, .xls) work out of the box.
+
+### Does it work offline?
+Yes. Once cached by your browser, iqplotter operates with complete functionality even when offline.
+
+## Canonical Reference Links
+
+- Homepage & Generator: https://iqplotter.web.app/
+- CSV to Chart Generator: https://iqplotter.web.app/csv-to-chart
+- Excel to Chart Plotter: https://iqplotter.web.app/excel-to-chart
+- CSV to Bar Chart Maker: https://iqplotter.web.app/csv-to-bar-chart
+- CSV to Line Chart Maker: https://iqplotter.web.app/csv-to-line-chart
+- CSV to Pie Chart Maker: https://iqplotter.web.app/csv-to-pie-chart
+- CSV to Scatter Plot Maker: https://iqplotter.web.app/csv-to-scatter-plot
+- Privacy Policy & Data Architecture: https://iqplotter.web.app/privacy
+- Full LLM Documentation: https://iqplotter.web.app/llms-full.txt

@@ -28,6 +28,9 @@ export const Footer: React.FC = () => {
               <li>
                 <a href="/csv-to-line-chart" className="hover:text-ink transition-colors">CSV to Line Chart</a>
               </li>
+              <li>
+                <a href="/csv-to-line-graph" className="hover:text-ink transition-colors">CSV to Line Graph</a>
+              </li>
             </ul>
           </div>
           <div>
