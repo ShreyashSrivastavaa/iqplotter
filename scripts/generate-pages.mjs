@@ -296,7 +296,12 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 ${sitemapPages
   .map(
     (page) =>
-      `  <url><loc>${base}/${page.path ? page.path : ""}</loc><lastmod>${today}</lastmod><changefreq>${page.changefreq}</changefreq><priority>${page.priority}</priority></url>`
+      `  <url>
+    <loc>${base}/${page.path ? page.path : ""}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`
   )
   .join("\n")}
 </urlset>
