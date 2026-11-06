@@ -261,11 +261,6 @@ for (const p of pages) {
     .replace(/<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${p.desc}" />`)
     .replace(/<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${p.title}" />`)
     .replace(/<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${p.desc}" />`)
-    // Replace H1 and intro paragraph in visible #seo-content
-    .replace(
-      /<h1 class="font-sans font-extrabold text-2xl sm:text-3xl tracking-tight text-ink mb-3">.*?<\/h1>\s*<p class="text-ink-muted leading-relaxed text-sm sm:text-base">.*?<\/p>/s,
-      `<h1 class="font-sans font-extrabold text-2xl sm:text-3xl tracking-tight text-ink mb-3">${p.h1}</h1>\n${p.intro}`
-    )
     // Update breadcrumb in JSON-LD
     .replace(
       /\{\s*"@type":\s*"BreadcrumbList",\s*"@id":\s*"https:\/\/iqplotter\.web\.app\/#breadcrumb",\s*"itemListElement":\s*\[\s*\{\s*"@type":\s*"ListItem",\s*"position":\s*1,\s*"name":\s*"Home",\s*"item":\s*"https:\/\/iqplotter\.web\.app\/"\s*\}\s*\]\s*\}/s,

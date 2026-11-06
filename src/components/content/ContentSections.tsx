@@ -1,4 +1,5 @@
 import React from 'react';
+import { SeoArticle } from './SeoArticle';
 
 export const ContentSections: React.FC = () => {
   return (
@@ -68,6 +69,9 @@ export const ContentSections: React.FC = () => {
           </p>
         </div>
       </div>
+
+      {/* In-depth On-Page SEO Guide & Documentation (Below Image 1) */}
+      <SeoArticle />
     </section>
   );
 };
