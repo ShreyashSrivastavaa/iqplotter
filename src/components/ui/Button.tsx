@@ -24,10 +24,14 @@ export const Button: React.FC<ButtonProps> = ({
   }[size];
 
   const variantClasses = {
-    primary: 'bg-[#1A1714] text-[#FAF7E9] hover:bg-[#34301F] shadow-sm',
-    outline: 'border border-[#8A8478] bg-transparent text-[#1A1714] hover:bg-[#FCFAF2]',
-    ghost: 'bg-transparent text-[#1A1714] hover:bg-[#FCFAF2]/80',
-    danger: 'bg-[#B42318] text-white hover:bg-[#912015]',
+    primary:
+      'bg-[#1A1714] text-[#FAF7E9] hover:bg-[#34301F] dark:bg-[#F7F5EC] dark:text-[#12110F] dark:hover:bg-[#EAE5D5] shadow-sm',
+    outline:
+      'border border-[#8A8478] dark:border-[#524D44] bg-transparent text-ink hover:bg-[#FCFAF2] dark:hover:bg-[#25231F] hover:border-ink/60',
+    ghost:
+      'bg-transparent text-ink hover:bg-[#FCFAF2]/80 dark:hover:bg-line/40',
+    danger:
+      'bg-[#B42318] text-white hover:bg-[#912015] dark:bg-[#D92D20] dark:hover:bg-[#B42318]',
   }[variant];
 
   const widthClass = fullWidth ? 'w-full' : '';
